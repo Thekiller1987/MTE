@@ -51,11 +51,6 @@ public class MDIhome extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         menuBar = new javax.swing.JMenuBar();
-        fileMenu = new javax.swing.JMenu();
-        openMenuItem = new javax.swing.JMenuItem();
-        saveMenuItem = new javax.swing.JMenuItem();
-        saveAsMenuItem = new javax.swing.JMenuItem();
-        exitMenuItem = new javax.swing.JMenuItem();
         helpMenu = new javax.swing.JMenu();
         aboutMenuItem = new javax.swing.JMenuItem();
 
@@ -65,13 +60,13 @@ public class MDIhome extends javax.swing.JFrame {
         jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/1814089_account_user_person_profile_avatar_icon.png"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/person icon.png"))); // NOI18N
         jButton1.setFocusable(false);
         jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         jToolBar1.add(jButton1);
 
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/4544841_box_business_comerce_delivery_shop_icon.png"))); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/box icon.png"))); // NOI18N
         jButton2.setFocusable(false);
         jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
@@ -104,7 +99,7 @@ public class MDIhome extends javax.swing.JFrame {
         jToolBar1.add(jButton6);
 
         desktopPane.add(jToolBar1);
-        jToolBar1.setBounds(0, 0, 570, 60);
+        jToolBar1.setBounds(0, 0, 650, 50);
 
         jToolBar2.setBackground(new java.awt.Color(204, 204, 204));
         jToolBar2.setBorder(null);
@@ -117,7 +112,7 @@ public class MDIhome extends javax.swing.JFrame {
         jToolBar2.add(jButton7);
 
         desktopPane.add(jToolBar2);
-        jToolBar2.setBounds(570, 0, 80, 60);
+        jToolBar2.setBounds(650, 0, 60, 50);
 
         jToolBar3.setBackground(new java.awt.Color(204, 204, 204));
         jToolBar3.setFloatable(false);
@@ -128,7 +123,7 @@ public class MDIhome extends javax.swing.JFrame {
         jToolBar3.add(jLabel1);
 
         desktopPane.add(jToolBar3);
-        jToolBar3.setBounds(10, 60, 80, 30);
+        jToolBar3.setBounds(10, 50, 80, 20);
 
         jToolBar4.setBackground(new java.awt.Color(204, 204, 204));
         jToolBar4.setFloatable(false);
@@ -139,7 +134,7 @@ public class MDIhome extends javax.swing.JFrame {
         jToolBar4.add(jLabel2);
 
         desktopPane.add(jToolBar4);
-        jToolBar4.setBounds(90, 60, 80, 30);
+        jToolBar4.setBounds(90, 50, 80, 20);
 
         jToolBar5.setBackground(new java.awt.Color(204, 204, 204));
         jToolBar5.setFloatable(false);
@@ -151,7 +146,7 @@ public class MDIhome extends javax.swing.JFrame {
         jToolBar5.add(jLabel3);
 
         desktopPane.add(jToolBar5);
-        jToolBar5.setBounds(170, 60, 60, 30);
+        jToolBar5.setBounds(170, 50, 60, 20);
 
         jToolBar6.setBackground(new java.awt.Color(204, 204, 204));
         jToolBar6.setFloatable(false);
@@ -162,7 +157,7 @@ public class MDIhome extends javax.swing.JFrame {
         jToolBar6.add(jLabel4);
 
         desktopPane.add(jToolBar6);
-        jToolBar6.setBounds(230, 60, 100, 30);
+        jToolBar6.setBounds(230, 50, 100, 20);
 
         jToolBar7.setBackground(new java.awt.Color(204, 204, 204));
         jToolBar7.setFloatable(false);
@@ -173,7 +168,7 @@ public class MDIhome extends javax.swing.JFrame {
         jToolBar7.add(jLabel6);
 
         desktopPane.add(jToolBar7);
-        jToolBar7.setBounds(330, 60, 60, 30);
+        jToolBar7.setBounds(330, 50, 60, 20);
 
         jToolBar8.setBackground(new java.awt.Color(204, 204, 204));
         jToolBar8.setFloatable(false);
@@ -184,7 +179,7 @@ public class MDIhome extends javax.swing.JFrame {
         jToolBar8.add(jLabel5);
 
         desktopPane.add(jToolBar8);
-        jToolBar8.setBounds(390, 60, 240, 30);
+        jToolBar8.setBounds(390, 50, 240, 20);
 
         jPanel1.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -192,15 +187,15 @@ public class MDIhome extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 10, Short.MAX_VALUE)
+            .addGap(0, 80, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 30, Short.MAX_VALUE)
+            .addGap(0, 20, Short.MAX_VALUE)
         );
 
         desktopPane.add(jPanel1);
-        jPanel1.setBounds(630, 60, 10, 30);
+        jPanel1.setBounds(630, 50, 80, 20);
 
         jPanel2.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -212,38 +207,11 @@ public class MDIhome extends javax.swing.JFrame {
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 30, Short.MAX_VALUE)
+            .addGap(0, 20, Short.MAX_VALUE)
         );
 
         desktopPane.add(jPanel2);
-        jPanel2.setBounds(0, 60, 10, 30);
-
-        fileMenu.setMnemonic('f');
-        fileMenu.setText("File");
-
-        openMenuItem.setMnemonic('o');
-        openMenuItem.setText("Open");
-        fileMenu.add(openMenuItem);
-
-        saveMenuItem.setMnemonic('s');
-        saveMenuItem.setText("Save");
-        fileMenu.add(saveMenuItem);
-
-        saveAsMenuItem.setMnemonic('a');
-        saveAsMenuItem.setText("Save As ...");
-        saveAsMenuItem.setDisplayedMnemonicIndex(5);
-        fileMenu.add(saveAsMenuItem);
-
-        exitMenuItem.setMnemonic('x');
-        exitMenuItem.setText("Exit");
-        exitMenuItem.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                exitMenuItemActionPerformed(evt);
-            }
-        });
-        fileMenu.add(exitMenuItem);
-
-        menuBar.add(fileMenu);
+        jPanel2.setBounds(0, 50, 10, 20);
 
         helpMenu.setMnemonic('h');
         helpMenu.setText("Ayuda");
@@ -266,19 +234,19 @@ public class MDIhome extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 637, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 706, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 418, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 474, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 21, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void exitMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_exitMenuItemActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_exitMenuItemActionPerformed
 
     private void aboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItemActionPerformed
         // TODO add your handling code here:
@@ -322,8 +290,6 @@ public class MDIhome extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem aboutMenuItem;
     private javax.swing.JDesktopPane desktopPane;
-    private javax.swing.JMenuItem exitMenuItem;
-    private javax.swing.JMenu fileMenu;
     private javax.swing.JMenu helpMenu;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -349,9 +315,6 @@ public class MDIhome extends javax.swing.JFrame {
     private javax.swing.JToolBar jToolBar7;
     private javax.swing.JToolBar jToolBar8;
     private javax.swing.JMenuBar menuBar;
-    private javax.swing.JMenuItem openMenuItem;
-    private javax.swing.JMenuItem saveAsMenuItem;
-    private javax.swing.JMenuItem saveMenuItem;
     // End of variables declaration//GEN-END:variables
 
 }
