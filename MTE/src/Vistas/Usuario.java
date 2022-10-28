@@ -242,6 +242,7 @@ public class Usuario extends javax.swing.JInternalFrame {
 
         jToolBar2.add(jPanel2);
 
+        jTable1.setBackground(new java.awt.Color(255, 255, 255));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -251,7 +252,7 @@ public class Usuario extends javax.swing.JInternalFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5"
+                "Id Usuario", "Nombre", "Apellido", "Codigo", "Contraseña"
             }
         ));
         jScrollPane1.setViewportView(jTable1);

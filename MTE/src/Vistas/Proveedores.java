@@ -198,6 +198,7 @@ public class Proveedores extends javax.swing.JInternalFrame {
 
         jToolBar1.add(jPanel1);
 
+        jTable1.setBackground(new java.awt.Color(255, 255, 255));
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
