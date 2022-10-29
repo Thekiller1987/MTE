@@ -26,6 +26,9 @@ public class MDIhome extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        pop = new javax.swing.JPopupMenu();
+        NuevaVenta = new javax.swing.JMenuItem();
+        ListaVenta = new javax.swing.JMenuItem();
         desktopPane = new javax.swing.JDesktopPane();
         jToolBar1 = new javax.swing.JToolBar();
         jButton1 = new javax.swing.JButton();
@@ -54,7 +57,16 @@ public class MDIhome extends javax.swing.JFrame {
         helpMenu = new javax.swing.JMenu();
         aboutMenuItem = new javax.swing.JMenuItem();
 
+        NuevaVenta.setText("Nueva Venta");
+        pop.add(NuevaVenta);
+
+        ListaVenta.setText("Lista de Ventas");
+        ListaVenta.setActionCommand("Lista de Ventas realizadas");
+        pop.add(ListaVenta);
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        desktopPane.setComponentPopupMenu(pop);
 
         jToolBar1.setBackground(new java.awt.Color(204, 204, 204));
         jToolBar1.setFloatable(false);
@@ -87,9 +99,14 @@ public class MDIhome extends javax.swing.JFrame {
 
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/tiendita.png"))); // NOI18N
         jButton5.setToolTipText("");
+        jButton5.setComponentPopupMenu(pop);
         jButton5.setFocusable(false);
         jButton5.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton5.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
         jToolBar1.add(jButton5);
 
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Factura Icon .png"))); // NOI18N
@@ -236,13 +253,13 @@ public class MDIhome extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 706, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 98, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 474, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 21, Short.MAX_VALUE))
+                .addGap(0, 23, Short.MAX_VALUE))
         );
 
         pack();
@@ -251,6 +268,10 @@ public class MDIhome extends javax.swing.JFrame {
     private void aboutMenuItemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_aboutMenuItemActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_aboutMenuItemActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -288,6 +309,8 @@ public class MDIhome extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenuItem ListaVenta;
+    private javax.swing.JMenuItem NuevaVenta;
     private javax.swing.JMenuItem aboutMenuItem;
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenu helpMenu;
@@ -315,6 +338,7 @@ public class MDIhome extends javax.swing.JFrame {
     private javax.swing.JToolBar jToolBar7;
     private javax.swing.JToolBar jToolBar8;
     private javax.swing.JMenuBar menuBar;
+    private javax.swing.JPopupMenu pop;
     // End of variables declaration//GEN-END:variables
 
 }
