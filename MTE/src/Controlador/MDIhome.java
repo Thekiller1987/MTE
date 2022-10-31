@@ -398,7 +398,8 @@ public class MDIhome extends javax.swing.JFrame {
     }//GEN-LAST:event_ListaVentaActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
-       System.exit(0);   // TODO add your handling code here:
+      dispose();
+         // TODO add your handling code here:
     }//GEN-LAST:event_jButton7ActionPerformed
 
     /**
