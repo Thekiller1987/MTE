@@ -1,0 +1,97 @@
+USE master
+CREATE DATABASE DB_MTE
+
+
+ USE DB_MTE
+ CREATE TABLE VENDEDORES
+ (
+    ID_empleado INT PRIMARY KEY IDENTITY NOT NULL,
+	nomb1 VARCHAR (26),
+	nomb2 VARCHAR (26),
+	apell1 VARCHAR (26),
+	apell2 VARCHAR (26),
+    numcelu VARCHAR (8)NOT NULL,
+	direc VARCHAR (30),
+  )
+
+
+  USE DB_MTE
+  CREATE TABLE CLIENTES 
+ ( 
+ 
+    codcli INT PRIMARY KEY NOT NULL,
+	nomb1 VARCHAR (26),
+	nomb2 VARCHAR (26),
+	apell1 VARCHAR (26),
+	apell2 VARCHAR (26),
+	numcelu VARCHAR (8) NOT NULL,
+	direc VARCHAR (30) ,
+ )
+
+
+ USE DB_MTE
+  CREATE TABLE VENTAS
+ ( 
+    ID_venta INT PRIMARY KEY IDENTITY NOT NULL,
+	fechaven DATETIME ,
+	precio INT,
+	cant INT ,
+	codcli INT not null,
+	ID_empleado INT not null
+	CONSTRAINT fk_VENDEDORES FOREIGN KEY (ID_empleado) REFERENCES VENDEDORES (ID_empleado),
+	CONSTRAINT fk_CLIENTES FOREIGN KEY (codcli) REFERENCES CLIENTES (codcli)
+ )
+
+ USE DB_MTE
+CREATE TABLE PRODUCTO
+(    
+    ID_prod INT PRIMARY KEY IDENTITY NOT NULL,
+	marca VARCHAR (26),
+	modelo VARCHAR (26),
+	garant DATETIME,
+	orig FLOAT ,
+	descrip VARCHAR (100),
+ )
+
+
+ USE DB_MTE
+ CREATE TABLE VENTAPRODUCTO
+ (
+    nrofactura INT PRIMARY KEY IDENTITY,
+    fecha DATETIME,
+	canti FLOAT ,
+	monto FLOAT ,
+	tipo_venta bit ,
+	direc VARCHAR (30),
+	ID_venta INT not null,
+	ID_prod INT not null,
+	CONSTRAINT fk_PRODUT FOREIGN KEY (ID_prod) REFERENCES PRODUCTO (ID_prod),
+	CONSTRAINT fk_VENT FOREIGN KEY (ID_venta) REFERENCES VENTAS (ID_venta)
+  )
+
+   USE DB_MTE
+  CREATE TABLE DEVOLUCIONES
+ ( 
+    ID_devoluciones INT PRIMARY KEY IDENTITY NOT NULL,
+	descrip VARCHAR (100),
+	fecha DATETIME ,
+	nrofactura INT not null,
+	CONSTRAINT fk_ventprod FOREIGN KEY (nrofactura) REFERENCES VENTAPRODUCTO (nrofactura),
+  )
+
+
+
+    USE DB_MTE
+  CREATE TABLE PROVEEDORES
+ ( 
+    ruc VARCHAR (16) PRIMARY KEY NOT NULL,
+	nomb VARCHAR (26),
+	numcelu VARCHAR (8)NOT NULL,
+	direc VARCHAR (30),
+	ID_prod INT not null,
+	CONSTRAINT fk_PRODUCTO FOREIGN KEY (ID_prod) REFERENCES PRODUCTO (ID_prod),
+  )
+
+
+
+
