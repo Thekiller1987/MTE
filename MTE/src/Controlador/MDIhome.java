@@ -75,6 +75,7 @@ public class MDIhome extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel3.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel3.setAutoscrolls(true);
         jPanel3.setMaximumSize(new java.awt.Dimension(940, 941));
 
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Factura Icon .png"))); // NOI18N
