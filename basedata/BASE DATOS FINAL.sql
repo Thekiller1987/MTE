@@ -14,7 +14,12 @@
   )
 
 
+<<<<<<< HEAD:BASE DATOS FINAL.sql
  
+=======
+
+  USE DB_MTE
+>>>>>>> 4d2f5ee41e4433c8626e5acababde40e6352304a:basedata/BASE DATOS FINAL.sql
   CREATE TABLE CLIENTES 
  ( 
  
@@ -33,8 +38,8 @@
  ( 
     ID_venta INT PRIMARY KEY IDENTITY NOT NULL,
 	fechaven DATETIME ,
-	precio INT,
-	cant INT ,
+	precio FLOAT,
+	cant FLOAT ,
 	codcli INT not null,
 	ID_empleado INT not null
 	CONSTRAINT fk_VENDEDORES FOREIGN KEY (ID_empleado) REFERENCES VENDEDORE (ID_empleado),
@@ -48,7 +53,7 @@ CREATE TABLE PRODUCTO
 	marca VARCHAR (26),
 	modelo VARCHAR (26),
 	garant DATETIME,
-	orig FLOAT ,
+	orig  bit,
 	descrip VARCHAR (100),
  )
 
@@ -74,8 +79,8 @@ CREATE TABLE PRODUCTO
     ID_devoluciones INT PRIMARY KEY IDENTITY NOT NULL,
 	descrip VARCHAR (100),
 	fecha DATETIME ,
-	nrofactura INT not null,
-	CONSTRAINT fk_ventprod FOREIGN KEY (nrofactura) REFERENCES VENTAPRODUCTO (nrofactura),
+	ID_prod INT not null,
+	CONSTRAINT fk_prod FOREIGN KEY (ID_prod) REFERENCES PRODUCTO (ID_prod),
   )
 
 
