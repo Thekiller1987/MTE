@@ -77,7 +77,6 @@ public class Usuario extends javax.swing.JInternalFrame {
         jLabel8.setText("Buscar :");
 
         jTextField5.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField5.setText("jTextField5");
 
         jButton4.setBackground(new java.awt.Color(204, 204, 204));
         jButton4.setForeground(new java.awt.Color(204, 204, 204));
@@ -137,7 +136,6 @@ public class Usuario extends javax.swing.JInternalFrame {
         jLabel3.setText("Nombre");
 
         textNombre.setBackground(new java.awt.Color(255, 255, 255));
-        textNombre.setText("jTextField1");
         textNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textNombreActionPerformed(evt);
@@ -148,20 +146,17 @@ public class Usuario extends javax.swing.JInternalFrame {
         jLabel4.setText("Apellido");
 
         textApellido.setBackground(new java.awt.Color(255, 255, 255));
-        textApellido.setText("jTextField2");
 
         jLabel6.setForeground(new java.awt.Color(51, 51, 51));
         jLabel6.setText("Contraseña");
 
         jcontraseña.setBackground(new java.awt.Color(255, 255, 255));
-        jcontraseña.setText("jPasswordField1");
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Detalles de Usuarios  :");
 
         txtIDU.setBackground(new java.awt.Color(255, 255, 255));
-        txtIDU.setText("jTextField4");
 
         jButton1.setBackground(new java.awt.Color(51, 204, 0));
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
