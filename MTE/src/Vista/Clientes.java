@@ -4,17 +4,28 @@
  */
 package Vista;
 
+
+import javax.swing.ButtonGroup;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+
 /**
  *
  * @author Admin
  */
 public class Clientes extends javax.swing.JInternalFrame {
 
+    ButtonGroup BTn;
     /**
      * Creates new form Clientes
      */
     public Clientes() {
         initComponents();
+        
+     textID2.setVisible(false);
     }
 
     /**
@@ -27,7 +38,7 @@ public class Clientes extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablacliente = new javax.swing.JTable();
         jToolBar2 = new javax.swing.JToolBar();
         jLabel7 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -37,25 +48,25 @@ public class Clientes extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        TextNClientes = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        TextAClientes = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        TextDClientes = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        textID2 = new javax.swing.JTextField();
+        BtngC = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jTextField6 = new javax.swing.JTextField();
+        TextNu = new javax.swing.JTextField();
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
         setResizable(true);
 
-        jTable1.setBackground(new java.awt.Color(255, 255, 255));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablacliente.setBackground(new java.awt.Color(255, 255, 255));
+        tablacliente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, "", null, null},
@@ -70,7 +81,7 @@ public class Clientes extends javax.swing.JInternalFrame {
                 "Id de Cliente", "Nombre", "Apellido", "Dirección", "Telefono"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tablacliente);
 
         jToolBar2.setBackground(new java.awt.Color(204, 204, 204));
         jToolBar2.setBorder(null);
@@ -136,25 +147,25 @@ public class Clientes extends javax.swing.JInternalFrame {
         jLabel3.setForeground(new java.awt.Color(51, 51, 51));
         jLabel3.setText("Nombre");
 
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField1.setText("jTextField1");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        TextNClientes.setBackground(new java.awt.Color(255, 255, 255));
+        TextNClientes.setText("jTextField1");
+        TextNClientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                TextNClientesActionPerformed(evt);
             }
         });
 
         jLabel4.setForeground(new java.awt.Color(51, 51, 51));
         jLabel4.setText("Apellido");
 
-        jTextField2.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField2.setText("jTextField2");
+        TextAClientes.setBackground(new java.awt.Color(255, 255, 255));
+        TextAClientes.setText("jTextField2");
 
         jLabel5.setForeground(new java.awt.Color(51, 51, 51));
         jLabel5.setText("Telefono ");
 
-        jTextField3.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField3.setText("jTextField3");
+        TextDClientes.setBackground(new java.awt.Color(255, 255, 255));
+        TextDClientes.setText("jTextField3");
 
         jLabel6.setForeground(new java.awt.Color(51, 51, 51));
         jLabel6.setText("Dirección");
@@ -163,19 +174,24 @@ public class Clientes extends javax.swing.JInternalFrame {
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Detalles de Clientes  :");
 
-        jTextField4.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField4.setText("jTextField4");
-
-        jButton1.setBackground(new java.awt.Color(0, 153, 51));
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/save white.png"))); // NOI18N
-        jButton1.setText("Guardar");
-        jButton1.setToolTipText("");
-        jButton1.setBorder(null);
-        jButton1.setBorderPainted(false);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        textID2.setBackground(new java.awt.Color(255, 255, 255));
+        textID2.setText("jTextField4");
+        textID2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                textID2ActionPerformed(evt);
+            }
+        });
+
+        BtngC.setBackground(new java.awt.Color(0, 153, 51));
+        BtngC.setForeground(new java.awt.Color(255, 255, 255));
+        BtngC.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/save white.png"))); // NOI18N
+        BtngC.setText("Guardar");
+        BtngC.setToolTipText("");
+        BtngC.setBorder(null);
+        BtngC.setBorderPainted(false);
+        BtngC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BtngCActionPerformed(evt);
             }
         });
 
@@ -196,8 +212,8 @@ public class Clientes extends javax.swing.JInternalFrame {
         jButton3.setText("Eliminar");
         jButton3.setBorder(null);
 
-        jTextField6.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField6.setText("jTextField6");
+        TextNu.setBackground(new java.awt.Color(255, 255, 255));
+        TextNu.setText("jTextField6");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -213,15 +229,15 @@ public class Clientes extends javax.swing.JInternalFrame {
                             .addComponent(jLabel2)
                             .addComponent(jLabel1)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING))))
+                                .addComponent(textID2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+                                .addComponent(TextDClientes, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(TextAClientes, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(TextNClientes, javax.swing.GroupLayout.Alignment.LEADING))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(33, 33, 33)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(BtngC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
@@ -231,7 +247,7 @@ public class Clientes extends javax.swing.JInternalFrame {
                         .addComponent(jLabel5))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(TextNu, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(20, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -242,25 +258,25 @@ public class Clientes extends javax.swing.JInternalFrame {
                 .addGap(26, 26, 26)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(textID2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TextNClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TextAClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6)
                 .addGap(12, 12, 12)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TextDClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TextNu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22)
-                .addComponent(jButton1)
+                .addComponent(BtngC)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -294,13 +310,44 @@ public class Clientes extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void TextNClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TextNClientesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_TextNClientesActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void BtngCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtngCActionPerformed
+//buton guardar       
+      String Id2 = textID2.getText();
+      String Nombre1 = TextNClientes.getText();
+      String Apellido1 = TextAClientes.getText();
+      String direccion = TextDClientes.getText();
+      String numero = TextNu.getText();
+      try{
+        Connection DataBase = Modelo.conexion.getConexion();
+          PreparedStatement  ps = DataBase.prepareStatement("INSER INTO CLIENTES (ID,Nombre,Apellido,Numero,Direccion)VALUES(?,?,?,?,?)");
+          ps.setString(1,  Id2);
+          ps.setString(2,  Nombre1);
+          ps.setString(3,  Apellido1);
+          ps.setString(4,  direccion);
+          ps.setString(5,  numero);
+           ps.setInt(6,  1);
+          ps.executeUpdate();
+         JOptionPane.showMessageDialog(null,"Registro guardado");
+             
+         limpiar();
+                      
+      }catch(SQLException e){
+          JOptionPane.showMessageDialog(null,e.toString());
+      }
+      }
+      private void limpiar(){
+           
+       textID2.setText("");
+       TextNClientes.setText("");
+       TextAClientes.setText("");
+       TextDClientes.setText("");
+       TextNu.setText("");
+     
+    }//GEN-LAST:event_BtngCActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
@@ -310,9 +357,17 @@ public class Clientes extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void textID2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textID2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textID2ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton BtngC;
+    private javax.swing.JTextField TextAClientes;
+    private javax.swing.JTextField TextDClientes;
+    private javax.swing.JTextField TextNClientes;
+    private javax.swing.JTextField TextNu;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
@@ -327,13 +382,9 @@ public class Clientes extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
     private javax.swing.JToolBar jToolBar2;
+    private javax.swing.JTable tablacliente;
+    private javax.swing.JTextField textID2;
     // End of variables declaration//GEN-END:variables
 }

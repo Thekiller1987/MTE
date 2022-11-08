@@ -24,6 +24,7 @@ public class Usuario extends javax.swing.JInternalFrame {
         btnGr = new ButtonGroup();
         btnGr.add(rbnMasvulino);
         btnGr.add(rbnFemenino);
+    
     }
 
     /**
@@ -313,8 +314,8 @@ public class Usuario extends javax.swing.JInternalFrame {
       }
       try{
           
-          Connection conexion = Modelo.conexion.getConexion();
-          PreparedStatement  ps = conexion.prepareStatement("INSER INTO USUARIOS (ID,Nombre,Apellido,Contraseña,Sexo)VALUES(?,?,?,?,?)");
+          Connection DataBase = Modelo.conexion.getConexion();
+          PreparedStatement  ps = DataBase.prepareStatement("INSER INTO USUARIOS (ID,Nombre,Apellido,Contraseña,Sexo)VALUES(?,?,?,?,?)");
           ps.setString(1,  ID);
           ps.setString(2,  Nombre);
           ps.setString(3,  Apellido);

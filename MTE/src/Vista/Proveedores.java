@@ -3,7 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
 package Vista;
-
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.PreparedStatement;
+import javax.swing.ButtonGroup;
+import javax.swing.JOptionPane;
 /**
  *
  * @author Admin
@@ -30,20 +35,20 @@ public class Proveedores extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        NombrePR = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        Ruc = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        DireccionPR = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField4 = new javax.swing.JTextField();
+        IdPr = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        jTextField6 = new javax.swing.JTextField();
+        TelefonoPR = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        TablaPR = new javax.swing.JTable();
         jToolBar2 = new javax.swing.JToolBar();
         jLabel7 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -67,25 +72,25 @@ public class Proveedores extends javax.swing.JInternalFrame {
         jLabel3.setForeground(new java.awt.Color(51, 51, 51));
         jLabel3.setText("Nombre");
 
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField1.setText("jTextField1");
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        NombrePR.setBackground(new java.awt.Color(255, 255, 255));
+        NombrePR.setText("jTextField1");
+        NombrePR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                NombrePRActionPerformed(evt);
             }
         });
 
         jLabel4.setForeground(new java.awt.Color(51, 51, 51));
-        jLabel4.setText("Apellido");
+        jLabel4.setText("Ruc del proveedor");
 
-        jTextField2.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField2.setText("jTextField2");
+        Ruc.setBackground(new java.awt.Color(255, 255, 255));
+        Ruc.setText("jTextField2");
 
         jLabel5.setForeground(new java.awt.Color(51, 51, 51));
         jLabel5.setText("Telefono ");
 
-        jTextField3.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField3.setText("jTextField3");
+        DireccionPR.setBackground(new java.awt.Color(255, 255, 255));
+        DireccionPR.setText("jTextField3");
 
         jLabel6.setForeground(new java.awt.Color(51, 51, 51));
         jLabel6.setText("Dirección");
@@ -94,8 +99,8 @@ public class Proveedores extends javax.swing.JInternalFrame {
         jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Detalles de los Proveedores :");
 
-        jTextField4.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField4.setText("jTextField4");
+        IdPr.setBackground(new java.awt.Color(255, 255, 255));
+        IdPr.setText("jTextField4");
 
         jButton1.setBackground(new java.awt.Color(51, 204, 0));
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
@@ -127,8 +132,8 @@ public class Proveedores extends javax.swing.JInternalFrame {
         jButton3.setText("Eliminar");
         jButton3.setBorder(null);
 
-        jTextField6.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField6.setText("jTextField6");
+        TelefonoPR.setBackground(new java.awt.Color(255, 255, 255));
+        TelefonoPR.setText("jTextField6");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -144,10 +149,10 @@ public class Proveedores extends javax.swing.JInternalFrame {
                             .addComponent(jLabel2)
                             .addComponent(jLabel1)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
-                                .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.Alignment.LEADING))))
+                                .addComponent(IdPr, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
+                                .addComponent(DireccionPR, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(Ruc, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(NombrePR, javax.swing.GroupLayout.Alignment.LEADING))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(33, 33, 33)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -162,7 +167,7 @@ public class Proveedores extends javax.swing.JInternalFrame {
                         .addComponent(jLabel5))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(TelefonoPR, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -173,23 +178,23 @@ public class Proveedores extends javax.swing.JInternalFrame {
                 .addGap(26, 26, 26)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(IdPr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(10, 10, 10)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(NombrePR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(Ruc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6)
                 .addGap(12, 12, 12)
-                .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(DireccionPR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(TelefonoPR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22)
                 .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -201,8 +206,8 @@ public class Proveedores extends javax.swing.JInternalFrame {
 
         jToolBar1.add(jPanel1);
 
-        jTable1.setBackground(new java.awt.Color(255, 255, 255));
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        TablaPR.setBackground(new java.awt.Color(255, 255, 255));
+        TablaPR.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, "", null, null},
@@ -214,10 +219,10 @@ public class Proveedores extends javax.swing.JInternalFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Id de Proveedor", "Nombre", "Apellido", "Dirección", "Telefono"
+                "Id de Proveedor", "Nombre", "Ruc", "Dirección", "Telefono"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(TablaPR);
 
         jToolBar2.setBackground(new java.awt.Color(204, 204, 204));
         jToolBar2.setBorder(null);
@@ -298,12 +303,46 @@ public class Proveedores extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void NombrePRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NombrePRActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_NombrePRActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+    //Boton guardar        
+    
+    String ID3 = IdPr.getText();
+    String Nombre3 = NombrePR.getText();
+    String Ruc = this.Ruc.getText();
+    String direccionp = DireccionPR.getText();
+    String Telefono3 = TelefonoPR.getText();
+    
+          try{
+          
+    Connection DataBase = Modelo.conexion.getConexion();
+          PreparedStatement ps = DataBase.prepareStatement("INSER INTO USUARIOS (Id de proveedor,Nombre,Ruc,Direccion,telefono)VALUES(?,?,?,?,?)");
+          ps.setString(1,  ID3);
+          ps.setString(2,  Nombre3);
+          ps.setString(3,  Ruc);
+          ps.setString(4,  direccionp);
+          ps.setString(5,  Telefono3);
+          ps.setInt(6,  1);
+          ps.executeUpdate();
+         JOptionPane.showMessageDialog(null,"Registro guardado");
+            limpiar();
+         }catch(SQLException e){
+          JOptionPane.showMessageDialog(null,e.toString());
+      }
+    
+          
+       }                                        
+    private void limpiar(){
+        IdPr.setText("");
+        NombrePR.setText("");
+        Ruc.setText("");
+        DireccionPR.setText("");
+        TelefonoPR.setText("");
+    
+    
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -316,6 +355,12 @@ public class Proveedores extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField DireccionPR;
+    private javax.swing.JTextField IdPr;
+    private javax.swing.JTextField NombrePR;
+    private javax.swing.JTextField Ruc;
+    private javax.swing.JTable TablaPR;
+    private javax.swing.JTextField TelefonoPR;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -331,13 +376,7 @@ public class Proveedores extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JToolBar jToolBar2;
     // End of variables declaration//GEN-END:variables
