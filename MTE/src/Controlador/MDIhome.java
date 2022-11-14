@@ -4,13 +4,13 @@
  */
 package Controlador;
 
-import Vista.Clientes;
+import Vista.RegistroClientes;
 import Vista.Compras;
 import Vista.Lventa;
 import Vista.Nventa;
 import Vista.Proveedores;
-import Vista.Usuario;
-import Vista.inventario;
+import Vista.RegistroUsuario;
+import Vista.Registro_inventario;
 
 /**
  *
@@ -169,22 +169,16 @@ public class MDIhome extends javax.swing.JFrame {
             }
         });
 
-        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Compras");
 
-        jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Ventas");
 
-        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Proveedores");
 
-        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Clientes");
 
-        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Inventario");
 
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Usuarios");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
@@ -253,9 +247,8 @@ public class MDIhome extends javax.swing.JFrame {
                         .addComponent(jLabel1))
                     .addComponent(jLabel3)
                     .addComponent(jLabel4)
-                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel5)
-                        .addComponent(jLabel6))))
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel6)))
         );
 
         desktopPane.add(jPanel3);
@@ -286,7 +279,7 @@ public class MDIhome extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         
-               Usuario u1 = new Usuario();
+               RegistroUsuario u1 = new RegistroUsuario();
        u1.setVisible(true);
              desktopPane.add(u1);
        u1.show();
@@ -297,7 +290,7 @@ public class MDIhome extends javax.swing.JFrame {
 
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
        
-       Usuario u1 = new Usuario();
+       RegistroUsuario u1 = new RegistroUsuario();
        u1.setVisible(true);
        u1.show();
        // TODO add your handling code here:
@@ -306,7 +299,7 @@ public class MDIhome extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
       
        
-               inventario in = new inventario();
+               Registro_inventario in = new Registro_inventario();
        in.setVisible(true);
              desktopPane.add(in);
       in.show();        
@@ -316,7 +309,7 @@ public class MDIhome extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
      
-          Clientes c = new Clientes();
+          RegistroClientes c = new RegistroClientes();
        c.setVisible(true);
              desktopPane.add(c);
        c.show();// TODO add your handling code here:
