@@ -3,25 +3,71 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
 package Vista;
+
+import Modelo.DAOProveedores;
+import Modelo.Provedores;
+import static java.nio.file.Files.list;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.PreparedStatement;
+import static java.util.Collections.list;
+import java.util.List;
 import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author Admin
  */
 public class Proveedores extends javax.swing.JInternalFrame {
 
+    private String getdirec;
+    private String direc;
+    
     /**
      * Creates new form Proveedores
      */
     public Proveedores() {
         initComponents();
+        
+     }
+
+    public Proveedores(String nomb, String numcelu, String direc) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
+    public Proveedores(String string, String string0, String string1, String string2) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public void limpiarCampos() {
+
+        jTextRuc.setText("");
+        jTextNomb.setText("");
+        jTextdirec.setText("");
+        jTextnumcelu.setText("");
+
+    }
+
+    public void obtenerDatos() {
+
+        List<Proveedores> proved = new DAOProveedores().ObtenerDatos();
+
+        DefaultTableModel modelo = new DefaultTableModel();
+
+        String[] columnas = {"RUC", "Nombre", "Dirección", "Teléfono"};
+
+        modelo.setColumnIdentifiers(columnas);
+        for (Proveedores provedo : proved) {
+
+            String[] renglon = {provedo.getRuc(), provedo.getNomb(), provedo.getDirec(), provedo.getNumcelu()};
+            modelo.addRow(renglon);
+
+        }
+
+        jTableproveedores.setModel(modelo);
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -35,22 +81,21 @@ public class Proveedores extends javax.swing.JInternalFrame {
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        NombrePR = new javax.swing.JTextField();
+        jTextNomb = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        Ruc = new javax.swing.JTextField();
+        jTextRuc = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
-        DireccionPR = new javax.swing.JTextField();
+        jTextdirec = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         IdPr = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-        TelefonoPR = new javax.swing.JTextField();
+        jTextnumcelu = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
-        TablaPR = new javax.swing.JTable();
+        jTableproveedores = new javax.swing.JTable();
         jToolBar2 = new javax.swing.JToolBar();
-        jLabel7 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jTextField5 = new javax.swing.JTextField();
@@ -72,35 +117,29 @@ public class Proveedores extends javax.swing.JInternalFrame {
         jLabel3.setForeground(new java.awt.Color(51, 51, 51));
         jLabel3.setText("Nombre");
 
-        NombrePR.setBackground(new java.awt.Color(255, 255, 255));
-        NombrePR.setText("jTextField1");
-        NombrePR.addActionListener(new java.awt.event.ActionListener() {
+        jTextNomb.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                NombrePRActionPerformed(evt);
+                jTextNombActionPerformed(evt);
             }
         });
 
         jLabel4.setForeground(new java.awt.Color(51, 51, 51));
         jLabel4.setText("Ruc del proveedor");
 
-        Ruc.setBackground(new java.awt.Color(255, 255, 255));
-        Ruc.setText("jTextField2");
-
         jLabel5.setForeground(new java.awt.Color(51, 51, 51));
         jLabel5.setText("Telefono ");
-
-        DireccionPR.setBackground(new java.awt.Color(255, 255, 255));
-        DireccionPR.setText("jTextField3");
 
         jLabel6.setForeground(new java.awt.Color(51, 51, 51));
         jLabel6.setText("Dirección");
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Detalles de los Proveedores :");
 
-        IdPr.setBackground(new java.awt.Color(255, 255, 255));
-        IdPr.setText("jTextField4");
+        IdPr.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                IdPrActionPerformed(evt);
+            }
+        });
 
         jButton1.setBackground(new java.awt.Color(51, 204, 0));
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
@@ -132,9 +171,6 @@ public class Proveedores extends javax.swing.JInternalFrame {
         jButton3.setText("Eliminar");
         jButton3.setBorder(null);
 
-        TelefonoPR.setBackground(new java.awt.Color(255, 255, 255));
-        TelefonoPR.setText("jTextField6");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -150,9 +186,9 @@ public class Proveedores extends javax.swing.JInternalFrame {
                             .addComponent(jLabel1)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(IdPr, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)
-                                .addComponent(DireccionPR, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(Ruc, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(NombrePR, javax.swing.GroupLayout.Alignment.LEADING))))
+                                .addComponent(jTextdirec, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTextRuc, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTextNomb, javax.swing.GroupLayout.Alignment.LEADING))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(33, 33, 33)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -167,7 +203,7 @@ public class Proveedores extends javax.swing.JInternalFrame {
                         .addComponent(jLabel5))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(TelefonoPR, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jTextnumcelu, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -182,19 +218,19 @@ public class Proveedores extends javax.swing.JInternalFrame {
                 .addGap(10, 10, 10)
                 .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(NombrePR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextNomb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(Ruc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextRuc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6)
                 .addGap(12, 12, 12)
-                .addComponent(DireccionPR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextdirec, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(TelefonoPR, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextnumcelu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22)
                 .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -206,11 +242,10 @@ public class Proveedores extends javax.swing.JInternalFrame {
 
         jToolBar1.add(jPanel1);
 
-        TablaPR.setBackground(new java.awt.Color(255, 255, 255));
-        TablaPR.setModel(new javax.swing.table.DefaultTableModel(
+        jTableproveedores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
-                {null, null, "", null, null},
+                {null, "", null, null, null},
                 {null, null, null, null, null},
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -219,27 +254,19 @@ public class Proveedores extends javax.swing.JInternalFrame {
                 {null, null, null, null, null}
             },
             new String [] {
-                "Id de Proveedor", "Nombre", "Ruc", "Dirección", "Telefono"
+                "Id de Proveedor", "Ruc", "Nombre", "Dirección", "Telefono"
             }
         ));
-        jScrollPane1.setViewportView(TablaPR);
+        jScrollPane1.setViewportView(jTableproveedores);
 
         jToolBar2.setBackground(new java.awt.Color(204, 204, 204));
         jToolBar2.setBorder(null);
         jToolBar2.setRollover(true);
 
-        jLabel7.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel7.setText("Lista de Clientes :");
-        jToolBar2.add(jLabel7);
-
         jPanel2.setBackground(new java.awt.Color(204, 204, 204));
 
         jLabel8.setForeground(new java.awt.Color(51, 51, 51));
         jLabel8.setText("Buscar :");
-
-        jTextField5.setBackground(new java.awt.Color(255, 255, 255));
-        jTextField5.setText("jTextField5");
 
         jButton4.setBackground(new java.awt.Color(204, 204, 204));
         jButton4.setForeground(new java.awt.Color(204, 204, 204));
@@ -264,7 +291,7 @@ public class Proveedores extends javax.swing.JInternalFrame {
                 .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(55, Short.MAX_VALUE))
+                .addContainerGap(241, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -303,17 +330,30 @@ public class Proveedores extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void NombrePRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NombrePRActionPerformed
+    private void jTextNombActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextNombActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_NombrePRActionPerformed
+    }//GEN-LAST:event_jTextNombActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
     //Boton guardar        
-    
-    
-        
-    
-    
+      String ruc = jTextRuc.getText();
+        String nombr = jTextNomb.getText();
+        String direcci = jTextdirec.getText();
+        String numcelur = jTextnumcelu.getText();
+
+        if (ruc.contentEquals("") || nombr.contentEquals("") || direcci.contentEquals("") || numcelur.contentEquals("")) {
+            JOptionPane.showMessageDialog(rootPane, "Todos los campos son obligatorio");
+        } else {
+
+            try {
+                Proveedores pro = new DAOProveedores().Insertar(ruc, nombr, numcelur, direcci);
+                JOptionPane.showMessageDialog(rootPane, "Registro Agregado");
+            } catch (Exception e) {
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(rootPane, "No se agrego el registro");
+            }
+        }
+   
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -324,14 +364,13 @@ public class Proveedores extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    private void IdPrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IdPrActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_IdPrActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField DireccionPR;
     private javax.swing.JTextField IdPr;
-    private javax.swing.JTextField NombrePR;
-    private javax.swing.JTextField Ruc;
-    private javax.swing.JTable TablaPR;
-    private javax.swing.JTextField TelefonoPR;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -342,13 +381,49 @@ public class Proveedores extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTableproveedores;
     private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextNomb;
+    private javax.swing.JTextField jTextRuc;
+    private javax.swing.JTextField jTextdirec;
+    private javax.swing.JTextField jTextnumcelu;
     private javax.swing.JToolBar jToolBar1;
     private javax.swing.JToolBar jToolBar2;
     // End of variables declaration//GEN-END:variables
+
+    private int getID_prov() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    private String getruc() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    private String getnomb() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    private String getdirec() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    private String getRuc() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    private String getNomb() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    private String getDirec() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    private String getNumcelu() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

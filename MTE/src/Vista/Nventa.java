@@ -68,28 +68,29 @@ public class Nventa extends javax.swing.JInternalFrame {
         jLabel4.setText("ID ventas");
 
         IDVENTA.setBackground(new java.awt.Color(255, 255, 255));
-        IDVENTA.setText("jTextField2");
+        IDVENTA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                IDVENTAActionPerformed(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Articulo :");
 
         ARTICULO.setBackground(new java.awt.Color(255, 255, 255));
-        ARTICULO.setText("jTextField4");
 
         jLabel6.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
         jLabel6.setText("Precio :");
 
         PRECIO.setBackground(new java.awt.Color(255, 255, 255));
-        PRECIO.setText("jTextField5");
 
         jLabel8.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(0, 0, 0));
         jLabel8.setText("Cantidad :");
 
         FECHA.setBackground(new java.awt.Color(255, 255, 255));
-        FECHA.setText("jTextField8");
 
         jLabel10.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
@@ -115,7 +116,6 @@ public class Nventa extends javax.swing.JInternalFrame {
         jButton3.setContentAreaFilled(false);
 
         CANT.setBackground(new java.awt.Color(255, 255, 255));
-        CANT.setText("jTextField6");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -307,6 +307,10 @@ public class Nventa extends javax.swing.JInternalFrame {
     private void BTGVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTGVActionPerformed
         // TGUARDAR:
     }//GEN-LAST:event_BTGVActionPerformed
+
+    private void IDVENTAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_IDVENTAActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_IDVENTAActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
