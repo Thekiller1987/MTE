@@ -81,8 +81,6 @@ public class RegistroClientes extends javax.swing.JInternalFrame {
         jLabel1 = new javax.swing.JLabel();
         jtextfieldIDclientes = new javax.swing.JTextField();
         BtngC = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         TextNu = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jTextFieldSegunNomb = new javax.swing.JTextField();
@@ -93,6 +91,7 @@ public class RegistroClientes extends javax.swing.JInternalFrame {
         jLabel7 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tablacliente = new javax.swing.JTable();
+        jBottonActualizar = new javax.swing.JButton();
 
         setClosable(true);
         setDefaultCloseOperation(javax.swing.WindowConstants.HIDE_ON_CLOSE);
@@ -137,23 +136,6 @@ public class RegistroClientes extends javax.swing.JInternalFrame {
                 BtngCActionPerformed(evt);
             }
         });
-
-        jButton2.setBackground(new java.awt.Color(0, 153, 255));
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/edit white bold.png"))); // NOI18N
-        jButton2.setText(" Editar");
-        jButton2.setBorder(null);
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
-        jButton3.setBackground(new java.awt.Color(255, 0, 0));
-        jButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Delete white 2.png"))); // NOI18N
-        jButton3.setText("Eliminar");
-        jButton3.setBorder(null);
 
         jLabel9.setText("Segundo Nombre");
 
@@ -210,6 +192,15 @@ public class RegistroClientes extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tablacliente);
 
+        jBottonActualizar.setBackground(new java.awt.Color(0, 153, 255));
+        jBottonActualizar.setForeground(new java.awt.Color(255, 255, 255));
+        jBottonActualizar.setText("Limpiar Campos");
+        jBottonActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBottonActualizarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -223,12 +214,6 @@ public class RegistroClientes extends javax.swing.JInternalFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addComponent(jLabel9))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
-                            .addComponent(BtngC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(jLabel4)
                     .addComponent(jLabel10)
                     .addComponent(jLabel6)
@@ -240,7 +225,11 @@ public class RegistroClientes extends javax.swing.JInternalFrame {
                         .addComponent(jTextFieldSegunNomb, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(TextAClientes, javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jTextFieldsegunapell, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(TextNu, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE)))
+                        .addComponent(TextNu, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 173, Short.MAX_VALUE))
+                    .addComponent(jBottonActualizar, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addComponent(BtngC, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -290,14 +279,10 @@ public class RegistroClientes extends javax.swing.JInternalFrame {
                         .addComponent(TextDClientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(BtngC)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton3))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addGap(21, 21, 21)
+                        .addComponent(jBottonActualizar))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -350,13 +335,9 @@ public class RegistroClientes extends javax.swing.JInternalFrame {
 }
 
         obtenerDatos();
-        limpiarCampos();
+        
 
     }//GEN-LAST:event_BtngCActionPerformed
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jtextfieldIDclientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtextfieldIDclientesActionPerformed
         // TODO add your handling code here:
@@ -366,14 +347,18 @@ public class RegistroClientes extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldSegunNombActionPerformed
 
+    private void jBottonActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBottonActualizarActionPerformed
+       
+        limpiarCampos();
+    }//GEN-LAST:event_jBottonActualizarActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtngC;
     private javax.swing.JTextField TextAClientes;
     private javax.swing.JTextField TextDClientes;
     private javax.swing.JTextField TextNu;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jBottonActualizar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;

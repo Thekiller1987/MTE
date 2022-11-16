@@ -12,7 +12,7 @@ import Vista.RegistroDevoluciones;
 
 /**
  *
- * @author Admin
+ * @author Oreki
  */
 public class MDIhome extends javax.swing.JFrame {
 
