@@ -4,6 +4,10 @@
  */
 package Vista;
 
+import Modelo.Clientes;
+import Modelo.DAOCliente;
+import Modelo.DAOUsuario;
+import Modelo.Usuarios;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -14,10 +18,9 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 /**
  *
- * @author Admin
+ * @author Oreki
  */
 public class RegistroUsuario extends javax.swing.JInternalFrame {
-    ButtonGroup btnGr;
     
     /**
      * Creates new form Usuario
@@ -26,10 +29,33 @@ public class RegistroUsuario extends javax.swing.JInternalFrame {
         initComponents();
         textUsuario.setEnabled(false);
 
+    }
+    public void limpiarCampos(){
+      textUsuario.setText("");
+      textNombre.setText("");
+      textsegNombre.setText("");
+      textApellido.setText("");
+      textsegApellido.setText("");
+      textTelefono.setText("");
+      textDireccion.setText("");
+    }
     
+    public void obtenerDatos(){
+        
+        List<Usuarios> usuari=new DAOUsuario().ObtenerDatos();
+        
+        DefaultTableModel modelo=new DefaultTableModel();
+        
+       String[] columnas = {"ID_Empleado", "Nombre", "Seg Nombre", "Apellido", "Seg Apellido","Telefono", "Direccion"};
+     modelo.setColumnIdentifiers(columnas);
+        for (Usuarios us:usuari){
+            
+            String[]renglon = {Integer.toString(us.getID_empleado()),us.getNomb1(),us.getNomb2(),us.getApell1(),us.getApell2(),us.getNumcelu(),us.getDirec()};
+               
+                 modelo.addRow(renglon);
         }
-     
-
+        tablausuario.setModel(modelo);
+       }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -292,7 +318,33 @@ public class RegistroUsuario extends javax.swing.JInternalFrame {
 
     private void btnGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGActionPerformed
         // boton guardar:
-       
+            String ID_empleado = textUsuario.getText();
+            String nomb1 = textNombre.getText();
+            String nomb2= textsegNombre.getText();
+            String  apell1=textApellido.getText();
+            String  apell2=textsegApellido.getText();
+            String  numcelu= textTelefono.getText();
+            String  direc= textDireccion.getText();
+            
+            
+            if(nomb1.contentEquals("")||nomb2.contentEquals("")||
+            direc.contentEquals("")||numcelu.contentEquals("")||
+            apell1.contentEquals("")||apell2.contentEquals("")){
+            JOptionPane.showMessageDialog(rootPane, "Todos los campos son obligatorio");
+        }else{
+            try{
+                
+                Usuarios usa =new DAOUsuario().insertar(WIDTH, nomb1, nomb2, apell1, apell2, numcelu, direc);
+                
+                JOptionPane.showMessageDialog(rootPane, "Registro agregado");
+
+            }catch (Exception e){
+                e.printStackTrace();
+                JOptionPane.showMessageDialog(rootPane, "No se agrego el registro");
+            }
+         }
+            obtenerDatos();
+        limpiarCampos();
     }//GEN-LAST:event_btnGActionPerformed
 
 

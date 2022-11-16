@@ -3,7 +3,8 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package Modelo;
-
+import java.sql.Date;
+import javax.swing.JFrame;
 /**
  *
  * @author Elieth
@@ -12,17 +13,17 @@ public class Devolucion {
     
 private int ID_devoluciones;
     private String descrip;
-    private String fecha;
+    private Date fecha;
     private int ID_prod;
-    
-    public Devolucion(int ID_devoluciones, String descrip, String fecha, int ID_prod) {
+
+    public Devolucion(int ID_devoluciones, String descrip, Date fecha, int ID_prod) {
         this.ID_devoluciones = ID_devoluciones;
         this.descrip = descrip;
         this.fecha = fecha;
         this.ID_prod = ID_prod;
     }
 
-    public Devolucion(String descrip, String fecha, int ID_prod) {
+    public Devolucion(String descrip, Date fecha, int ID_prod) {
         this.descrip = descrip;
         this.fecha = fecha;
         this.ID_prod = ID_prod;
@@ -44,11 +45,11 @@ private int ID_devoluciones;
         this.descrip = descrip;
     }
 
-    public String getFecha() {
+    public Date getFecha() {
         return fecha;
     }
 
-    public void setFecha(String fecha) {
+    public void setFecha(Date fecha) {
         this.fecha = fecha;
     }
 
@@ -59,5 +60,7 @@ private int ID_devoluciones;
     public void setID_prod(int ID_prod) {
         this.ID_prod = ID_prod;
     }
+    
+    
     
 }

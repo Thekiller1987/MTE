@@ -324,7 +324,7 @@ public class RegistroClientes extends javax.swing.JInternalFrame {
 
     private void BtngCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtngCActionPerformed
 //buton guardar       
-String cedula = jtextfieldIDclientes.getText();
+        String codcli = jtextfieldIDclientes.getText();
         String nomb1 = jtextFieldPrimerNomb.getText();
         String nomb2= jTextFieldSegunNomb.getText();
         String  apell1=TextAClientes.getText();

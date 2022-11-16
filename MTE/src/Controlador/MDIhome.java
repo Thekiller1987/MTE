@@ -8,7 +8,7 @@ import Vista.RegistroClientes;
 import Vista.Nventa;
 import Vista.RegistroUsuario;
 import Vista.Registro_inventario;
-import Vista.Devoluciones;
+import Vista.RegistroDevoluciones;
 
 /**
  *
@@ -305,7 +305,7 @@ public class MDIhome extends javax.swing.JFrame {
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
       // TODO add your handling code here:
-      Devoluciones dv = new Devoluciones();
+      RegistroDevoluciones dv = new RegistroDevoluciones();
       dv.setVisible(true);
         desktopPane.add(dv);
         dv.show();

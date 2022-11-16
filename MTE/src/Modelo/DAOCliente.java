@@ -10,7 +10,7 @@ import java.util.Map;
 
 /**
  *
- * @author Elieth
+ * @author Oreki
  */
 public class DAOCliente {
     public Clientes insertar(int codcli, String nomb1, String nomb2, String apell1, String apell2, String numcelu, String direc){

@@ -4,48 +4,51 @@
  */
 package Vista;
 
-import Modelo.DAODevoluciones;
-import Modelo.Devolucion;
-import java.awt.Component;
-import java.util.HashSet;
-import java.util.List;
-import javax.swing.JOptionPane;
+import Modelo.*;
+import java.util.*;
 import javax.swing.table.DefaultTableModel;
+import java.sql.Date;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author Oreki
  */
-public class Devoluciones extends javax.swing.JFrame {
-        private Component rootpane;
+public class RegistroDevoluciones extends javax.swing.JFrame {
+
     /**
      * Creates new form Devoluciones
      */
-    public Devoluciones() {
+    public RegistroDevoluciones() {
         initComponents();
-        TextIdPro.setEditable(false);
+        textIdDev.setEnabled(false);
         
-        }
-    public void limpiarCampos(){
-    textIdDev.setText("");
-    textdescri.setText("");
-    textfech.setText("");
-    TextIdPro.setText("");
     }
-     public void obtenerDatos(){
-    List<Devolucion> devol = new DAODevoluciones().obtenerDatos();
-    DefaultTableModel modelo=new DefaultTableModel();
-    String[] columns={"ID_devoluciones", "descrip","fecha","ID_prod"};
     
-    modelo.setColumnIdentifiers(columns);
-         for (Devolucion au: devol){
-             
-             String[]renglon={Integer.toString(au.getID_devoluciones()),au.getDescrip(),
-                 au.getFecha(),Integer.toString(au.getID_prod())};
-             }
-         tablaDevol.setModel(modelo);
+    public void limpiarCampos() {
+        textIdDev.setText("");
+        textdescri.setText("");
+        textfech.setText("");
+        TextIdPro.setText("");
+    }
     
+    public void ObtenerDatos() {
+        List<Devolucion> devol = new DAODevoluciones().ObtenerDatos();
+        
+        DefaultTableModel modelo = new DefaultTableModel();
+        
+        String[] columnas = {"ID_devoluciones", "descrip", "fecha", "ID_prod"};
+        
+        modelo.setColumnIdentifiers(columnas);
+        for (Devolucion au : devol) {
+            
+            String[] renglon = {Integer.toString(au.getID_devoluciones()), au.getDescrip(),
+                au.getFecha().toString(), Integer.toString(au.getID_prod())};
+            modelo.addRow(renglon);
         }
+        tablaDevol.setModel(modelo);
+        
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -73,6 +76,7 @@ public class Devoluciones extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         TextIdPro = new javax.swing.JTextField();
+        jBottonActualizar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -152,6 +156,11 @@ public class Devoluciones extends javax.swing.JFrame {
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Iconos/Delete white 2.png"))); // NOI18N
         jButton3.setText("Eliminar");
         jButton3.setBorder(null);
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         textdescri.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -186,6 +195,15 @@ public class Devoluciones extends javax.swing.JFrame {
             }
         });
 
+        jBottonActualizar.setBackground(new java.awt.Color(0, 153, 255));
+        jBottonActualizar.setForeground(new java.awt.Color(255, 255, 255));
+        jBottonActualizar.setText("Actualizar");
+        jBottonActualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBottonActualizarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -215,7 +233,8 @@ public class Devoluciones extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(BtngGuard, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 122, Short.MAX_VALUE)
+                            .addComponent(jBottonActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jToolBar2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -249,12 +268,14 @@ public class Devoluciones extends javax.swing.JFrame {
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(TextIdPro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(45, 45, 45)
-                        .addComponent(BtngGuard)
+                        .addGap(36, 36, 36)
+                        .addComponent(BtngGuard, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton2)
+                        .addComponent(jBottonActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton3))
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -272,31 +293,68 @@ public class Devoluciones extends javax.swing.JFrame {
 
     private void BtngGuardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtngGuardActionPerformed
         //buton guardar
-            var ID_devoluciones = textIdDev.getText();
-            String descrip = textdescri.getText();
-            String fecha = textfech.getText();
-            String ID_prod = TextIdPro.getText();
-            
-            if(ID_devoluciones.contentEquals("") ||descrip.contentEquals("") ||
-                    fecha.contentEquals("") || ID_devoluciones.contentEquals("")){
-                 JOptionPane.showMessageDialog(rootPane, "Todos los campos son obligatorio");
-        }else{
-            try{
-                Devolucion d1 = new DAODevoluciones().Insertar(HIDE_ON_CLOSE, descrip, fecha, ERROR);
-                 JOptionPane.showMessageDialog(rootPane, "Registro agregado");
-            }catch (Exception e){
+        
+        String descrip = textdescri.getText();
+        String fecha = textfech.getText();
+        String ID_prod = TextIdPro.getText();
+        
+        if (descrip.contentEquals("") || fecha.contentEquals("") || ID_prod.contentEquals("")) {
+            JOptionPane.showMessageDialog(rootPane, "Todos los campos son obligatorio");
+        } else {
+            try {
+                Date fech = Date.valueOf(fecha);
+                int Idprod = Integer.parseInt(ID_prod);
+                Devolucion d1 = new DAODevoluciones().Insertar(descrip, fech, Idprod);
+                JOptionPane.showMessageDialog(rootPane, "Registro agregado");
+            } catch (Exception e) {
                 e.printStackTrace();
                 JOptionPane.showMessageDialog(rootPane, "No se agrego el registro");
             }
-            }
-            obtenerDatos();
+        }
+        ObtenerDatos();
         limpiarCampos();
     }//GEN-LAST:event_BtngGuardActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        int fila = this.tablaDevol.getSelectedRow();
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(rootPane, "Selecione un registro de la tabla primero");
+        } else {
+            try {
+                
+                int idprov = Integer.parseInt((String) this.tablaDevol.getValueAt(fila, 0).toString());
+                String descrrr = (String) this.tablaDevol.getValueAt(fila, 1);
+                Date fechhs = Date.valueOf((String) this.tablaDevol.getValueAt(fila, 2).toString());
+                int idprodd = Integer.parseInt((String) this.tablaDevol.getValueAt(fila, 3).toString());
+                
+                textIdDev.setText("" + idprov);
+                textdescri.setText("" + descrrr);
+                textfech.setText(String.valueOf(fechhs));
+                TextIdPro.setText("" + idprodd);
+                
+            }catch (NumberFormatException e){
+                e.printStackTrace();
+            }
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    public void actualizarProvedor(){
+        int idprov = Integer.parseInt(this.TextIdPro.getText());
+        String descrrr = this.textdescri.getText();
+        Date fechhs = Date.valueOf(this.textfech.getText());
+        int idprodd = Integer.parseInt(this.TextIdPro.getText());
+        
+        
+        DAODevoluciones dao = new DAODevoluciones();
+        int devoll = dao.Actualizar(idprov, descrrr, fechhs, idprodd);
+        if (devoll == 1){
+            JOptionPane.showMessageDialog(rootPane, "¡Producto Actualizado!");
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "¡Ocurrio un ERROR!");
+        }
+    }
+    
+    
     private void textdescriActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textdescriActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_textdescriActionPerformed
@@ -305,11 +363,29 @@ public class Devoluciones extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_TextIdProActionPerformed
 
-    
+    private void jBottonActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBottonActualizarActionPerformed
+        actualizarProvedor();
+        ObtenerDatos();
+        limpiarCampos();
+    }//GEN-LAST:event_jBottonActualizarActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        int fila = this.tablaDevol.getSelectedRow();
+        if (fila == -1) {
+            JOptionPane.showMessageDialog(rootPane, "Selecione un registro de la tabla primero");
+        } else {
+            int id = Integer.parseInt((String) this.tablaDevol.getValueAt(fila, 0).toString());
+            DAODevoluciones dao = new DAODevoluciones();
+            dao.Eliminar(id);
+            ObtenerDatos();
+        }
+    }//GEN-LAST:event_jButton3ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BtngGuard;
     private javax.swing.JTextField TextIdPro;
+    private javax.swing.JButton jBottonActualizar;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
