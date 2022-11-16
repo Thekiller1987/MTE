@@ -6,17 +6,9 @@ package Modelo;
 
 /**
  *
- * @author Usuario
+ * @author Elieth
  */
 public class Clientes {
-
-    private int codcli;
-    private String nomb1;
-    private String nomb2;
-    private String apell1;
-    private String apell2;
-    private String numcelu;
-    private String direc;
 
     public Clientes(int codcli, String nomb1, String nomb2, String apell1, String apell2, String numcelu, String direc) {
         this.codcli = codcli;
@@ -55,7 +47,7 @@ public class Clientes {
 
     public String getNomb2() {
         return nomb2;
-    }                                       
+    }
 
     public void setNomb2(String nomb2) {
         this.nomb2 = nomb2;
@@ -92,6 +84,14 @@ public class Clientes {
     public void setDirec(String direc) {
         this.direc = direc;
     }
+
     
-    
+    private int codcli;
+    private String nomb1;
+    private String nomb2;
+    private String apell1;
+    private String apell2;
+    private String numcelu;
+    private String direc;
+   
 }

@@ -70,7 +70,6 @@ public class Registro_inventario extends javax.swing.JInternalFrame {
         jLabel3.setForeground(new java.awt.Color(51, 51, 51));
         jLabel3.setText("Descripción:");
 
-        jTextField1.setBackground(new java.awt.Color(255, 255, 255));
         jTextField1.setText("jTextField1");
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -81,23 +80,19 @@ public class Registro_inventario extends javax.swing.JInternalFrame {
         jLabel4.setForeground(new java.awt.Color(51, 51, 51));
         jLabel4.setText("Marca:");
 
-        jTextField2.setBackground(new java.awt.Color(255, 255, 255));
         jTextField2.setText("jTextField2");
 
         jLabel5.setForeground(new java.awt.Color(51, 51, 51));
         jLabel5.setText("Precio :");
 
-        jTextField3.setBackground(new java.awt.Color(255, 255, 255));
         jTextField3.setText("jTextField3");
 
         jLabel6.setForeground(new java.awt.Color(51, 51, 51));
         jLabel6.setText("Stock :");
 
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("Detalles de Productos  :");
 
-        jTextField4.setBackground(new java.awt.Color(255, 255, 255));
         jTextField4.setText("jTextField4");
 
         jButton1.setBackground(new java.awt.Color(51, 204, 0));
@@ -130,14 +125,11 @@ public class Registro_inventario extends javax.swing.JInternalFrame {
         jButton3.setText("Eliminar");
         jButton3.setBorder(null);
 
-        jTextField6.setBackground(new java.awt.Color(255, 255, 255));
         jTextField6.setText("jTextField6");
 
         jLabel10.setForeground(new java.awt.Color(51, 51, 51));
         jLabel10.setText("Estado");
 
-        jComboBox1.setBackground(new java.awt.Color(255, 255, 255));
-        jComboBox1.setForeground(new java.awt.Color(0, 0, 0));
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Disponible ", "Agotado", " " }));
         jComboBox1.setBorder(null);
         jComboBox1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -226,7 +218,6 @@ public class Registro_inventario extends javax.swing.JInternalFrame {
         jToolBar2.setRollover(true);
 
         jLabel7.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(0, 0, 0));
         jLabel7.setText("Lista de Producto :");
         jToolBar2.add(jLabel7);
 
@@ -235,7 +226,6 @@ public class Registro_inventario extends javax.swing.JInternalFrame {
         jLabel8.setForeground(new java.awt.Color(51, 51, 51));
         jLabel8.setText("Buscar :");
 
-        jTextField5.setBackground(new java.awt.Color(255, 255, 255));
         jTextField5.setText("jTextField5");
 
         jButton4.setBackground(new java.awt.Color(204, 204, 204));
@@ -273,29 +263,29 @@ public class Registro_inventario extends javax.swing.JInternalFrame {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Id articulo", "Descripción", "Marca", "Precio", "Stock", "Estado"
+                "ID Producto", "Nombre", "Marca", "Descripcion", "Garantia", "Precio", "Stock"
             }
         ));
         jScrollPane1.setViewportView(jTable1);

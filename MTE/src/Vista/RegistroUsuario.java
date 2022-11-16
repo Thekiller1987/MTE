@@ -3,8 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JInternalFrame.java to edit this template
  */
 package Vista;
-import Modelo.DAOUsuario;
-import Modelo.Usuario;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -27,33 +26,7 @@ public class RegistroUsuario extends javax.swing.JInternalFrame {
         initComponents();
         textUsuario.setEnabled(false);
 
-    }
     
-     public void limpiarCampos() {
-        textUsuario.setText("");
-        textNombre.setText("");
-        textsegNombre.setText("");
-        textApellido.setText("");
-        textsegApellido.setText("");
-        textTelefono.setText("");
-        textDireccion.setText("");
-     }
-     public void ObtenerDatos() {
-         //Se crea una lista que almacena los datos obtenidos
-        List<Usuario> usuari = new DAOUsuario().ObtenerDatos();
-        //Define el modelo para la tabla
-         DefaultTableModel modelo = new DefaultTableModel();
-          //Arreglo con nombres las columnas de la tabla
-        String[] columnas = {"ID_Empleado", "Nombre", "Seg Nombre", "Apellido", "Seg Apellido", "Telefono", "Direccion"};
-       
-        //Establece los nombres definidos de las columnas
-        modelo.setColumnIdentifiers(columnas);
-        for (Usuario c : usuari){
-            String[] renglon = {Integer.toString(c.getID_empleado()),c.getNomb1(),c.getNomb2(),c.getApell1(),c.getApell2(),
-                    c.getNumcelu(),c.getDirec()};
-                    modelo.addRow(renglon);
-            }
-        tablausuario.setModel(modelo);
         }
      
 
@@ -319,30 +292,7 @@ public class RegistroUsuario extends javax.swing.JInternalFrame {
 
     private void btnGActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGActionPerformed
         // boton guardar:
-        String nomb1 = textNombre.getText();
-        String nomb2 = textsegNombre.getText();
-        String apell1 = textApellido.getText();
-        String apell2 = textsegApellido.getText();
-        String numcel = textTelefono.getText();
-        String direc = textDireccion.getText();
-        
-        if (nomb1.contentEquals("") || nomb2.contentEquals("") ||
-                apell1.contentEquals("") || apell2.contentEquals("") ||
-                numcel.contentEquals("")|| direc.contentEquals("")) {
-            JOptionPane.showMessageDialog(rootPane, "Todos los campos son obligatorio");
-        }else{
-            try{
-                
-                Usuario u1 = new DAOUsuario().Insertar(nomb1, nomb2, apell1, apell2, numcel, direc);
-                JOptionPane.showMessageDialog(rootPane, "Registro agregado");
-            }catch (Exception e){ 
-                e.printStackTrace();
-                JOptionPane.showMessageDialog(rootPane, "No se agrego el registro");
-           }
-        }
-        ObtenerDatos();
-        limpiarCampos();
-        
+       
     }//GEN-LAST:event_btnGActionPerformed
 
 
