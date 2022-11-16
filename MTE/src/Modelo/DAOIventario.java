@@ -4,51 +4,50 @@
  */
 package Modelo;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import javax.crypto.spec.IvParameterSpec;
+import java.sql.Date;
+import java.util.*;
 
 /**
  *
  * @author Elieth
  */
 public class DAOIventario {
-    public Inventario insertar(int ID_Prod, String nombre, String marca, String modelo, String decrip, String garant, String presio, String stock) {
-         String transaccion = "INSERT INTO PRODUCTO VALUES('"   
-            +ID_Prod+", "
-            +nombre+"','"
-            +marca+"','"
-            +modelo+"','"
-            +decrip+"','"
-            +garant+"','"
-            +presio+"','"
-            +stock+"')";
-          if (new  DataBase().Actualizar(transaccion)>0) {
-            
+
+    public Inventario Insertar(String nombre, String marca, String modelo, String decrip,
+            String garant, String presio, String stock) {
+        String transaccion = "INSERT INTO PRODUCTO VALUES('"
+                + nombre + "', '"
+                + marca + "', '"
+                + modelo + "', '"
+                + decrip + "', '"
+                + garant + "', '"
+                + presio + "', '"
+                + stock + "') ";
+        if (new DataBase().Actualizar(transaccion) > 0) {
+
             return new Inventario(nombre, marca, modelo, decrip, garant, presio, stock);
+        }
+        return null;
     }
-            return null;
-    }
-     public List ObtenerDatos(){
-        
-        String transaccion ="SELECT * FROM PRODUCTO";   
-         List<Map> registros = new  DataBase().Listar(transaccion);
+
+    public List ObtenerDatos() {
+
+        String transaccion = "SELECT * FROM PRODUCTO";
+        List<Map> registros = new DataBase().Listar(transaccion);
         List<Inventario> ive = new ArrayList();
-        for (Map registro : registros){
-            
-            Inventario vn = new Inventario ((int) registro.get("ID_prod"),
-                    (String) registro.get("nombre"),(String) registro.get("marca"),
-                    (String) registro.get("modelo"),(String) registro.get("decrip"),
-                    (String) registro.get("garant"),(String) registro.get("precio"),
+        for (Map registro : registros) {
+
+            Inventario vn = new Inventario((int) registro.get("ID_prod"),
+                    (String) registro.get("nombre"),
+                    (String) registro.get("marca"),
+                    (String) registro.get("modelo"), 
+                    (String) registro.get("decrip"),
+                    (String) registro.get("garant"), 
+                    (String) registro.get("precio"),
                     (String) registro.get("stock"));
-                    ive.add(vn);
+            ive.add(vn);
         }
         return ive;
-     }
-
-    public Inventario Insertar(String nombre, String marca, String Precio, String descrip, String garant, String Precio0, String stock) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
+
 }
-        

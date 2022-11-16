@@ -10,6 +10,15 @@ package Modelo;
  */
 public class Inventario {
 
+    private int ID_Prod;
+    private String nombre;
+    private String marca;
+    private String modelo;
+    private String decrip;
+    private String garant;
+    private String presio;
+    private String stock;
+
     public Inventario(int ID_Prod, String nombre, String marca, String modelo, String decrip, String garant, String presio, String stock) {
         this.ID_Prod = ID_Prod;
         this.nombre = nombre;
@@ -94,14 +103,7 @@ public class Inventario {
     public void setStock(String stock) {
         this.stock = stock;
     }
-    private int ID_Prod;
-    private String nombre;
-    private String marca;
-        private String modelo;
-        private String decrip;
-        private String garant;
-        private String presio;
-        private String stock;
-        
+
+    
     
 }

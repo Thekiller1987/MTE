@@ -49,9 +49,10 @@ CREATE TABLE PRODUCTO
     ID_prod INT PRIMARY KEY IDENTITY (1,1)NOT NULL,
 	nombre VARCHAR (50),
 	marca VARCHAR (26),
-	descrip VARCHAR (100),
+	modelo VARCHAR (26),
+	decrip VARCHAR (100),
 	garant VARCHAR  (5),
-	Precio  VARCHAR (6),
+	Presio  VARCHAR (6),
 	stock INT,
  )
 
@@ -73,7 +74,7 @@ CREATE TABLE PRODUCTO
  ( 
     ID_devoluciones INT PRIMARY KEY IDENTITY (1,1)NOT NULL,
 	descrip VARCHAR (100),
-	fecha VARCHAR (15),
+	fecha DATE not null,
 	ID_prod INT not null,
 	CONSTRAINT fk_prod FOREIGN KEY (ID_prod) REFERENCES PRODUCTO (ID_prod),
   )

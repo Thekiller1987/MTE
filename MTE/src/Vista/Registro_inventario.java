@@ -52,7 +52,7 @@ public class Registro_inventario extends javax.swing.JInternalFrame {
              }
                  
              
-        tab.setModel(modelo);
+        jTableinv.setModel(modelo);
     }
 
     /**
@@ -333,7 +333,7 @@ public class Registro_inventario extends javax.swing.JInternalFrame {
     private void BtngGuardActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BtngGuardActionPerformed
         //buton guardar
          
-        String ID_prod = jTextIdprod.getText();
+        
         String nombre = jTextnom.getText();
         String marca = jTextmarc.getText();
         String descrip = jTextdecrp.getText();
@@ -341,13 +341,13 @@ public class Registro_inventario extends javax.swing.JInternalFrame {
         String Precio = jTextprec.getText();
         String stock = jTextstock.getText();
                 
-        if (ID_prod.contentEquals("") || nombre.contentEquals("")||marca.contentEquals("")||descrip.contentEquals("")
+        if ( nombre.contentEquals("")||marca.contentEquals("")||descrip.contentEquals("")
                 ||garant.contentEquals("")||Precio.contentEquals("") ||stock.contentEquals("")){
               JOptionPane.showMessageDialog(rootPane, "Todos los campos son obligatorio");
         } else {
             try {
                 
-                Inventario iv = new DAOIventario().Insertar(nombre, marca, Precio, descrip, garant, Precio, stock);
+                Inventario iv = new DAOIventario().Insertar(nombre, marca, descrip,Precio, garant, Precio, stock);
                 JOptionPane.showMessageDialog(rootPane, "Registro agregado");
             } catch (Exception e) {
                 e.printStackTrace();
