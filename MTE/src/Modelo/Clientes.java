@@ -6,7 +6,7 @@ package Modelo;
 
 /**
  *
- * @author Elieth
+ * @author MTE
  */
 public class Clientes {
  
